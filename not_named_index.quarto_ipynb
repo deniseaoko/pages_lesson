@@ -1,0 +1,116 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Another Test Report\"\n",
+        "author: \"The GRAPH Courses\"\n",
+        "format: html\n",
+        "---\n",
+        "\n",
+        "\n",
+        "This is a Quarto report with a table, a scatter plot, and a map using the Gapminder dataset, Plotly, and itables.\n",
+        "\n",
+        "\n",
+        "\n",
+        "## Table\n"
+      ],
+      "id": "923dd778"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "pip install itables"
+      ],
+      "id": "2b722deb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from itables import show\n",
+        "import plotly.express as px\n",
+        "\n",
+        "# Load Gapminder dataset\n",
+        "gapminder = px.data.gapminder()\n",
+        "\n",
+        "# Display table\n",
+        "show(gapminder.head())"
+      ],
+      "id": "0768a86a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Scatter Plot\n"
+      ],
+      "id": "490e84a5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "px.scatter(\n",
+        "    gapminder.query(\"year == 2007\"),\n",
+        "    x=\"gdpPercap\",\n",
+        "    y=\"lifeExp\",\n",
+        "    color=\"continent\",\n",
+        "    title=\"GDP vs Life Expectancy (2007)\"\n",
+        ")"
+      ],
+      "id": "c6e2bb6f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Map\n"
+      ],
+      "id": "7a79769a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "px.choropleth(\n",
+        "    gapminder.query(\"year == 2007\"),\n",
+        "    locations=\"iso_alpha\",\n",
+        "    color=\"lifeExp\",\n",
+        "    hover_name=\"country\",\n",
+        "    title=\"Life Expectancy (2007)\",\n",
+        ")"
+      ],
+      "id": "e5343642",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Sample quarto report from the GRAPH Courses python bootcamp (thegraphcourses.org/pbb)."
+      ],
+      "id": "c7b8fada"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\DOWINO5\\AppData\\Local\\Programs\\Python\\Python312\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
